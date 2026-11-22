@@ -91,6 +91,8 @@ function userTexts(items) {
 }
 
 function respond(response, payload, state) {
+  const unsupported = payload.tools?.find(({ type }) => !['function', 'custom'].includes(type));
+  if (unsupported) throw new Error(`Unsupported provider tool type: ${unsupported.type}`);
   const items = Array.isArray(payload.input) ? payload.input : [];
   const texts = userTexts(items);
   const latest = texts.findLast((text) => text.includes('FIXTURE_')) || '';

@@ -45,6 +45,8 @@ function prepareConfig(agentHome, settings) {
     'wire_api = "responses"',
     'request_max_retries = 1',
     'stream_max_retries = 1',
+    '[agents]',
+    'enabled = false',
     '[sandbox_workspace_write]',
     'network_access = false',
     '[shell_environment_policy]',

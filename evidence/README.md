@@ -1,6 +1,12 @@
 # 运行证据
 
-以下结果来自 Windows 本机和隔离 Linux 虚拟机内的真实 Codex CLI 0.171.0。上游使用本地确定性 Responses 测试服务。测试服务提供固定工具调用，Codex 执行命令并写出实际文件。考试模型的能力和考试网关兼容性需要用考试凭据验证。
+## 考试网关实测
+
+[实测记录](exam-result.md) 和 [报告预览截图](04-exam-report.png) 记录了真实 Codex CLI 通过考试网关执行代码开发、整理工作材料以及续聊的结果。实测使用仓库内的合成材料。
+
+## 集成测试
+
+以下结果来自 Windows 本机和隔离 Linux 虚拟机内的真实 Codex CLI 0.171.0。上游使用本地确定性 Responses 测试服务。测试服务提供固定工具调用，Codex 执行命令并写出实际文件。
 
 - [CLI 集成测试记录](smoke-result.txt)与 [浏览器测试记录](browser-result.txt)。
 - [工作台首页](01-workbench.png)、[开发任务与运行日志](02-code-tests.png)、[报告预览和多会话](03-report-preview.png)。

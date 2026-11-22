@@ -16,6 +16,8 @@ AGENT_TIMEOUT_SECONDS=600
 
 `AGENT_BASE_URL` 是 API 基地址，CLI 会在其后请求 `/responses`。服务须支持 OpenAI Responses 流式协议和工具调用。仅提供 `/chat/completions` 的服务不适用。应用启动后才会在收到任务时调用模型。
 
+为兼容只接受客户端 `function` 和 `custom` 工具的考试网关，工作台禁用了 Codex 多 Agent 工具。多个工作台会话仍可并发运行。
+
 ```sh
 docker compose up --build -d
 docker compose ps
@@ -52,7 +54,7 @@ docker compose config --quiet
 
 `npm run smoke` 需要真实 Codex CLI 和 Python 3。它在本机启动确定性的 Responses 测试服务，真实调用 Codex、执行工具、生成文件并检查两轮续聊。报告工作区上传合成材料。测试覆盖重复上传、路径校验、两个并发任务、进程重启、鉴权错误、停止、超时和非正常退出恢复。GitHub Actions 工作流使用 Docker 运行这一套集成测试。浏览器自动化可使用 Playwright，在项目目录临时安装 `playwright` 后运行 `npx playwright install chromium` 和 `node scripts/browser-smoke.mjs`。
 
-本地实际验证和截图见 [evidence](evidence/README.md)。接入考试服务时，在浏览器运行 `demo/` 中两条任务并各追问一次，即可另行保存真实模型的验证记录。
+运行记录和截图见 [验证证据](evidence/README.md)，其中包括 Docker 集成测试、浏览器测试和考试网关实测。可以用 `demo/` 中的材料和提示词复测两类任务及续聊。
 
 ## 已知限制
 
