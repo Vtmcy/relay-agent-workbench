@@ -1,0 +1,19 @@
+Docker integration test, 2026-11-22 (Asia/Shanghai)
+Environment: isolated Alpine Linux VM on Windows, Linux kernel 6.18.60-0-virt
+Docker Engine: 28.5.2
+Docker Compose version v2.40.3
+Node container base: node:24-bookworm-slim
+codex-cli 0.171.0
+
+Output excerpts
+Successfully built c5072d9d783c
+Successfully tagged relay-workbench:latest
+Container relay-workbench-1 Started
+Container relay-workbench-1 Healthy
+Host mapping inside VM: 127.0.0.1:4177->4177/tcp
+PASS concurrent code/report workspaces, upload, verified tool execution, history, download, origin and path checks
+PASS restart preservation and true Codex thread resume for both sessions, 3 code tests and revised report
+PASS provider rejection, cancellation, timeout, interrupted run recovery
+PASS named volume preserves session across Compose restart
+
+Provider: local deterministic Responses fixture. Agent binary and sandboxed shell execution were real.

@@ -1,0 +1,3 @@
+PASS Chromium desktop and mobile, send, uploads, closed-page recovery, navigation, both follow-ups, expanded test results, report preview and two browser downloads
+Browser: 157.0.8103.80
+Upstream: local Responses fixture, real Codex CLI and sandboxed shell tool

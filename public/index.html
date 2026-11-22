@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#171e19">
+  <title>Relay · Agent 工作台</title>
+  <link rel="stylesheet" href="/style.css">
+  <script type="module" src="/app.js"></script>
+</head>
+<body>
+  <div class="layout">
+    <aside id="sidebar" class="sidebar" aria-label="会话导航">
+      <div class="brand"><span class="brand-mark" aria-hidden="true">▲</span><span>Relay<small>AGENT WORKBENCH</small></span></div>
+      <button id="new-session" class="new-session"><span aria-hidden="true">＋</span> 新建会话</button>
+      <div class="nav-caption">会话</div>
+      <nav id="sessions" class="sessions" aria-label="会话列表"></nav>
+      <div class="sidebar-foot"><span class="connection-dot"></span> 本地工作台 <span class="foot-rule"></span> 单用户</div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button id="toggle-sidebar" class="icon-button mobile-sidebar" aria-controls="sidebar" aria-expanded="false" aria-label="展开会话">☰</button>
+        <div class="crumb"><span>工作台</span><span aria-hidden="true">/</span><strong id="session-title">新会话</strong></div>
+        <div class="top-actions">
+          <span id="agent-status" class="agent-status" role="status"><span class="status-dot"></span><span id="agent-label">连接中</span></span>
+          <button id="toggle-files" class="icon-button" aria-expanded="true" aria-controls="file-pane" title="文件面板">文件 <span aria-hidden="true">▥</span></button>
+        </div>
+      </header>
+      <div id="configuration" class="configuration" role="status" hidden></div>
+
+      <section id="timeline" class="timeline" aria-label="对话与运行进度" tabindex="0">
+        <div id="welcome" class="welcome">
+          <span class="kicker">RELAY <span></span> CODEX CLI</span>
+          <h1>今天想完成<br>什么工作<span>？</span></h1>
+          <p>把任务交给 Codex，跟踪执行过程，在同一会话里继续修改。</p>
+          <div class="suggestions">
+            <button class="suggestion" data-example="code"><span class="suggestion-icon" aria-hidden="true">&gt;_</span><span><strong>开发一个工具</strong><small>编写并测试 CSV 汇总脚本</small></span><span class="suggestion-arrow" aria-hidden="true">↗</span></button>
+            <button class="suggestion" data-example="report"><span class="suggestion-icon" aria-hidden="true">▤</span><span><strong>整理工作材料</strong><small>分析工单和纪要，生成报告</small></span><span class="suggestion-arrow" aria-hidden="true">↗</span></button>
+          </div>
+        </div>
+        <div id="runs" class="runs"></div>
+      </section>
+
+      <div class="composer-area">
+        <div id="compose-error" class="notice" role="alert" hidden></div>
+        <form id="composer" class="composer">
+          <label class="sr-only" for="prompt">任务消息</label>
+          <textarea id="prompt" rows="2" maxlength="12000" placeholder="描述任务，或继续修改已有成果…"></textarea>
+          <div class="composer-bar">
+            <button type="button" id="composer-upload" class="plain-button" title="上传材料"><span aria-hidden="true">＋</span> 添加文件</button>
+            <div class="composer-actions"><span class="shortcut">Ctrl / ⌘ + Enter</span><button type="button" id="cancel-run" class="cancel" hidden>■ 停止</button><button type="submit" id="send" class="send">发送 <span aria-hidden="true">↑</span></button></div>
+          </div>
+        </form>
+      </div>
+    </main>
+
+    <aside id="file-pane" class="file-pane" aria-label="会话文件">
+      <div class="file-heading"><div><span class="kicker">WORKSPACE</span><h2>会话文件</h2></div><button id="close-files" class="icon-button close-files" aria-label="关闭文件面板">×</button></div>
+      <button id="upload" class="drop-zone"><span aria-hidden="true">↑</span><strong>上传材料</strong><small>点击或拖入文件 · 单个 ≤ 20 MB</small></button>
+      <input id="upload-input" type="file" multiple hidden>
+      <div id="upload-status" class="upload-status" aria-live="polite"></div>
+      <section class="file-group"><h3><span class="group-icon output-icon" aria-hidden="true">↳</span> 成果 <span id="outputs-count" class="count">0</span></h3><div id="outputs" class="file-list"></div></section>
+      <section class="file-group"><h3><span class="group-icon" aria-hidden="true">↥</span> 材料 <span id="inputs-count" class="count">0</span></h3><div id="inputs" class="file-list"></div></section>
+    </aside>
+  </div>
+  <dialog id="preview-dialog">
+    <div class="preview-header"><h2 id="preview-title">文件预览</h2><a id="preview-download" class="plain-button" download>下载</a><form method="dialog"><button class="icon-button" aria-label="关闭预览">×</button></form></div>
+    <pre id="preview-body" tabindex="0"></pre>
+  </dialog>
+</body>
+</html>

@@ -1,0 +1,25 @@
+name: Container smoke test
+
+on: [push, pull_request, workflow_dispatch]
+
+permissions:
+  contents: read
+
+jobs:
+  integration:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check Compose and build the image
+        run: |
+          docker compose config --quiet
+          docker compose build
+      - name: Exercise real Codex in the container
+        run: |
+          docker compose run -T --rm --no-deps \
+            -e WORKBENCH_SERVER_SCRIPT=/app/src/server.mjs \
+            -e WORKBENCH_TEST_DATA_PARENT=/data \
+            -e WORKBENCH_TEST_TIMEOUT_SECONDS=45 \
+            -v "$PWD:/repo:ro" \
+            workbench node --disable-warning=ExperimentalWarning /repo/scripts/smoke.mjs

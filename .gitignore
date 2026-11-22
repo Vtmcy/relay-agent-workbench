@@ -1,0 +1,7 @@
+.env
+.env.*
+!.env.example
+.workbench/
+node_modules/
+*.log
+__pycache__/

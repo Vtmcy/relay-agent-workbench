@@ -1,0 +1,17 @@
+Platform: win32; Node: v24.21.0
+CLI: Codex exec --json and exec resume; upstream: local deterministic Responses fixture
+Provider requests: 11; requests with verified prior prompt: 4
+PASS: code and document workspaces, uploads, file fetching, run events, session restart and resume
+PASS: provider rejection, cancellation, timeout, interrupted run recovery
+
+Codex command result:
+退出码 0
+
+test_empty (test_summary.SummaryTests.test_empty) ... ok
+test_sort (test_summary.SummaryTests.test_sort) ... ok
+test_totals (test_summary.SummaryTests.test_totals) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.000s
+
+OK
